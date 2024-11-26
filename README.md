@@ -6,16 +6,16 @@ Ce projet consiste à créer une application immersive pour la conception et la 
 
 ### Fonctionnalités Principales
 
-* **Conception 3D** : Permet aux utilisateurs de créer et de manipuler des modèles LEGO en 3D.
-* **Visualisation Immersive** : Utilisation de la réalité virtuelle pour visualiser les modèles LEGO de manière immersive.
-* **Compatibilité Multi-Plateforme** : Développement sous Unity et Unreal Engine pour une compatibilité étendue.
-* **Base de Données de Pièces LEGO** : Intégration d'une base de données contenant des modèles 3D de pièces LEGO.
+- **Conception 3D** : Permet aux utilisateurs de créer et de manipuler des modèles LEGO en 3D.
+- **Visualisation Immersive** : Utilisation de la réalité virtuelle pour visualiser les modèles LEGO de manière immersive.
+- **Compatibilité Multi-Plateforme** : Développement sous Unity et Unreal Engine pour une compatibilité étendue.
+- **Base de Données de Pièces LEGO** : Intégration d'une base de données contenant des modèles 3D de pièces LEGO.
 
 ## Prérequis
 
-* **Unity** : Version 2021.3 ou supérieure
-* **Unreal Engine** : Version 5.0 ou supérieure
-* **Meta Quest 3** : Casque VR
+- **Unity** : Version 2021.3 ou supérieure
+- **Unreal Engine** : Version 5.0 ou supérieure
+- **Meta Quest 3** : Casque VR
 
 ## Installation
 
@@ -47,11 +47,11 @@ Ce projet consiste à créer une application immersive pour la conception et la 
 
 La base de données contient des modèles 3D de pièces LEGO, organisés par catégorie et type. Chaque entrée comprend :
 
-* **Nom de la pièce**
-* **ID de la pièce**
-* **Modèle 3D** le dossier de la pieces
-* **Catégorie** (ex. : briques, plaques, accessoires)
-* **Dimensions**
+- **Nom de la pièce**
+- **ID de la pièce**
+- **Modèle 3D** le dossier de la pieces
+- **Catégorie** (ex. : briques, plaques, accessoires)
+- **Dimensions**
 
 Pour les categorie on prend celle de [Bricklinks](https://www.bricklink.com/v2/main.page)
 
@@ -63,14 +63,70 @@ Vous trouverez la [base de donnée](./Models/_Bdd.json) ansi que les models dans
 {
   "pieces": [
     {
-        "id": "3003",
-        "name": "Brique 2x2",
-        "model": "models/3001.fbx",
-        "category": "Brick",
-        "dimensions": "2x2"
-      }
+      "id": "3003",
+      "name": "Brique 2x2",
+      "model": "models/3001.fbx",
+      "category": "Brick",
+      "dimensions": "2x2"
+    }
   ]
 }
+```
+
+### API
+
+Nous avons egalement un api à disposition
+
+Utilisation
+
+Pour utiliser ce script, vous pouvez exécuter les commandes suivantes dans votre terminal :
+
+- Pour obtenir les détails d'une pièce LEGO :
+
+```sh
+npm run getPartDetails -- 3003
+```
+
+- Pour obtenir les couleurs disponibles pour une pièce LEGO :
+
+```sh
+  npm run getPartColors -- 3003
+```
+
+- Pour obtenir les ensembles contenant une pièce spécifique :
+
+```sh
+  npm run getPartSets -- 3003
+```
+
+- Pour obtenir les détails d'un ensemble LEGO :
+
+```sh
+    npm run getSetDetails -- 75252-1
+```
+
+- Pour obtenir les pièces d'un ensemble LEGO :
+
+```sh
+  npm run getSetParts -- 75252-1
+```
+
+- Pour rechercher des pièces LEGO :
+
+```sh
+    npm run searchParts -- brick
+```
+
+- Pour rechercher des ensembles LEGO :
+
+```sh
+  npm run searchSets -- star wars
+```
+
+- Pour afficher l'aide :
+
+```sh
+    npm run help
 ```
 
 ### Contribution

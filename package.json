@@ -1,0 +1,18 @@
+{
+  "type": "module",
+  "dependencies": {
+    "dotenv": "^16.4.5",
+    "node-fetch": "^3.3.2"
+  },
+  "scripts": {
+    "start": "node Utils/main.js",
+    "getPartDetails": "node Utils/main.js getPartDetails",
+    "getPartColors": "node Utils/main.js getPartColors",
+    "getPartSets": "node Utils/main.js getPartSets",
+    "getSetDetails": "node Utils/main.js getSetDetails",
+    "getSetParts": "node Utils/main.js getSetParts",
+    "searchParts": "node Utils/main.js searchParts",
+    "searchSets": "node Utils/main.js searchSets",
+    "help": "node Utils/main.js help"
+  }
+}
