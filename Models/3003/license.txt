@@ -1,0 +1,11 @@
+Model Information:
+* title:	2x2 Lego Brick
+* source:	https://sketchfab.com/3d-models/2x2-lego-brick-fe10ac44c033412bbd43afb86cca6254
+* author:	Aleks P (https://sketchfab.com/Aleksp)
+
+Model License:
+* license type:	CC-BY-4.0 (http://creativecommons.org/licenses/by/4.0/)
+* requirements:	Author must be credited. Commercial use is allowed.
+
+If you use this 3D model in your project be sure to copy paste this credit wherever you share it:
+This work is based on "2x2 Lego Brick" (https://sketchfab.com/3d-models/2x2-lego-brick-fe10ac44c033412bbd43afb86cca6254) by Aleks P (https://sketchfab.com/Aleksp) licensed under CC-BY-4.0 (http://creativecommons.org/licenses/by/4.0/)

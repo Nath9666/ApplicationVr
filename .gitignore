@@ -1,0 +1,50 @@
+# Fichiers et dossiers générés par Unity
+[Ll]ibrary/
+[Tt]emp/
+[Oo]bj/
+[Bb]uild/
+[Bb]uilds/
+[Ll]ogs/
+[Mm]emoryCaptures/
+UserSettings/
+Assets/AssetStoreTools*
+
+# Fichiers de configuration Unity
+# Si vous souhaitez partager vos paramètres de projet avec vos collègues
+# vous pouvez supprimer cette ligne.
+ProjectSettings/
+
+# Fichiers de build Unity
+*.apk
+*.aab
+*.unitypackage
+
+# Fichiers et dossiers générés par Unreal Engine
+Binaries/
+DerivedDataCache/
+Intermediate/
+Saved/
+.vscode/
+
+# Fichiers de configuration Unreal Engine
+*.xcodeproj
+*.xcworkspace
+*.sln
+*.suo
+*.opensdf
+*.sdf
+*.VC.db
+*.VC.VC.opendb
+
+# Fichiers de build Unreal Engine
+*.pdb
+*.exe
+*.dll
+*.app
+*.dylib
+*.so
+*.ipa
+
+# Fichiers système
+.DS_Store
+Thumbs.db

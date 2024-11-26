@@ -1,0 +1,11 @@
+{
+    "pieces": [
+      {
+        "id": "3003",
+        "name": "Brique 2x2",
+        "model": "./3003",
+        "category": "Brick",
+        "dimensions": "2x2"
+      }
+    ]
+  }
