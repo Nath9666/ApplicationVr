@@ -8,7 +8,7 @@ import { JSDOM } from "jsdom";
  * @returns {Promise<string>} A promise that resolves to the 3D model URL or WebGL data.
  * @throws Will throw an error if the fetch operation fails.
  */
-const get3DModelUrl = async (partId) => {
+export const get3DModelUrl = async (partId) => {
   const url = `https://www.bricklink.com/3D/parts/${partId}.dat`;
 
   try {
@@ -16,15 +16,13 @@ const get3DModelUrl = async (partId) => {
     const html = response.data;
     
 
-    return html;
+    return html, url;
   } catch (error) {
     console.error("Error:", error);
     throw error;
   }
 };
 
-get3DModelUrl("x1214").then((data) => console.log(data));
-
 // TODO: faire la liste des pièces à récupérer
-// TODO: fusionner les fichier json en un seul
+// TODO: fusionner les fichier json en un seul // bcq trop gros pour travailler dessus
 // TODO: voir si dans bricklink on peut récupérer les pièces en 3D

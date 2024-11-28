@@ -21,7 +21,7 @@ const mergeFile = (files, fileDist) => {
   fs.writeFileSync(fileDist, JSON.stringify(allParts, null, 2));
 };
 
-const AllFilesDirectory = "./Utils/data";
+const AllFilesDirectory = "./Utils/data/rebrickable/";
 const files = fs.readdirSync(AllFilesDirectory).map(file => `${AllFilesDirectory}/${file}`);
 const fileDist = "./Models/_Bdd.json";
 
