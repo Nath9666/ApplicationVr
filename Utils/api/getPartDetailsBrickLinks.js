@@ -57,8 +57,8 @@ export const getPartDetailsBrick = async (partId) => {
     if (packagingDimensionsElement) {
       packagingDimensions = packagingDimensionsElement.textContent;
     }
-    let url3D
-    get3DModelUrl("3003").then((data, url) => {
+    let url3D;
+    get3DModelUrl(partId).then((data, url) => {
       if (data) {
         if (data.startsWith("0")) {
           console.log("3D model is Dat format.");
@@ -89,7 +89,8 @@ export const getPartDetailsBrick = async (partId) => {
 const AllFilesDirectory = "./Utils/data/rebrickable/";
 const files = fs
   .readdirSync(AllFilesDirectory)
-  .map((file) => `${AllFilesDirectory}/${file}`);
+  .map((file) => `${AllFilesDirectory}/${file}`)
+  .sort((a, b) => a.localeCompare(b, undefined, { numeric: true }));
 
 const processFiles = async () => {
   for (const file of files) {
@@ -115,4 +116,3 @@ const processFiles = async () => {
   }
 };
 processFiles();
-
