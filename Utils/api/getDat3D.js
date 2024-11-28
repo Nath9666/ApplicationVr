@@ -24,3 +24,7 @@ const get3DModelUrl = async (partId) => {
 };
 
 get3DModelUrl("x1214").then((data) => console.log(data));
+
+// TODO: faire la liste des pièces à récupérer
+// TODO: fusionner les fichier json en un seul
+// TODO: voir si dans bricklink on peut récupérer les pièces en 3D
