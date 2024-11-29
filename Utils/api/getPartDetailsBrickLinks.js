@@ -58,14 +58,15 @@ export const getPartDetailsBrick = async (partId) => {
       packagingDimensions = packagingDimensionsElement.textContent;
     }
     let url3D;
-    get3DModelUrl(partId).then((data, url) => {
+    get3DModelUrl(partId).then((data) => {
       if (data) {
-        if (data.startsWith("0")) {
-          console.log("3D model is Dat format.");
-          url3D = url;
+        if (data[0].startsWith("<!doctype html>")) {
+          console.log("No 3D model found.");
+          url3D = "N/A";
+        } else {
+          console.log("3D model");
+          url3D = data[1];
         }
-      } else {
-        console.log("No results found.");
       }
     });
 

@@ -14,15 +14,10 @@ export const get3DModelUrl = async (partId) => {
   try {
     const response = await axios.get(url);
     const html = response.data;
-    
 
-    return html, url;
+    return [html, url];
   } catch (error) {
     console.error("Error:", error);
     throw error;
   }
 };
-
-// TODO: faire la liste des pièces à récupérer
-// TODO: fusionner les fichier json en un seul // bcq trop gros pour travailler dessus
-// TODO: voir si dans bricklink on peut récupérer les pièces en 3D
