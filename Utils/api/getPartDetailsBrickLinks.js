@@ -113,13 +113,11 @@ const files = fs
   .sort((a, b) => a.localeCompare(b, undefined, { numeric: true }));
 
 const processFiles = async () => {
-  let fileNumber = 0;
   let totalFiles = files.length;
   const batchSize = 50; // Taille du lot pour les parts
 
-  for (let i = 0; i < totalFiles; i++) {
+  for (let i = 31; i < totalFiles; i++) {
     const file = files[i];
-    fileNumber++;
     const data = fs.readFileSync(file);
     const dataDist = file
       .replace("rebrickable", "bricklinks")
@@ -132,7 +130,7 @@ const processFiles = async () => {
 
       const partPromises = batchParts.map(async (part, partNumber) => {
         console.log(
-          `${fileNumber}/${totalFiles} - part ${j + partNumber + 1}/${
+          `${i}/${totalFiles} - part ${j + partNumber + 1}/${
             parts.length
           }`
         );
