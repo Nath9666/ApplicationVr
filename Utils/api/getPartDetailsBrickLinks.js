@@ -112,16 +112,14 @@ const files = fs
   .map((file) => `${AllFilesDirectory}/${file}`)
   .sort((a, b) => a.localeCompare(b, undefined, { numeric: true }));
 
-const processFiles = async () => {
-  let totalFiles = files.length;
+const processFiles = async (startFileIndex, endFileIndex) => {
   const batchSize = 50; // Taille du lot pour les parts
+  let batchCounter = 0;
+  let allParts = [];
 
-  for (let i = 31; i < totalFiles; i++) {
+  for (let i = startFileIndex; i <= endFileIndex; i++) {
     const file = files[i];
     const data = fs.readFileSync(file);
-    const dataDist = file
-      .replace("rebrickable", "bricklinks")
-      .replace(".json", "_bricklinks.json");
     const json = JSON.parse(data);
     const parts = json.results;
 
@@ -130,9 +128,7 @@ const processFiles = async () => {
 
       const partPromises = batchParts.map(async (part, partNumber) => {
         console.log(
-          `${i}/${totalFiles} - part ${j + partNumber + 1}/${
-            parts.length
-          }`
+          `${i}/${endFileIndex} - part ${j + partNumber + 1}/${parts.length}`
         );
         if (!part.external_ids || !part.external_ids.BrickLink) {
           console.log(`no bricklink id for ${part.part_num}`);
@@ -144,15 +140,35 @@ const processFiles = async () => {
         return partDetails;
       });
 
-      const allParts = await Promise.all(partPromises);
-      fs.writeFileSync(
-        dataDist.split(".json")[0] + `_${j + 1}.json`,
-        JSON.stringify(allParts.filter(Boolean), null, 2)
-      );
+      const batchResults = await Promise.all(partPromises);
+      allParts = allParts.concat(batchResults.filter(Boolean));
+
+      if (allParts.length >= 1000) {
+        const dataDist = `./Utils/data/bricklinks/parts_${batchCounter}.json`;
+        fs.writeFileSync(dataDist, JSON.stringify(allParts, null, 2));
+        allParts = [];
+        batchCounter++;
+      }
 
       await delay(time); // Attendre avant de traiter le prochain lot
     }
   }
+
+  // Écrire les parties restantes si elles existent
+  if (allParts.length > 0) {
+    const dataDist = `./Utils/data/bricklinks/parts_${batchCounter}.json`;
+    fs.writeFileSync(dataDist, JSON.stringify(allParts, null, 2));
+  }
 };
 
-processFiles();
+// Lire les arguments de la ligne de commande
+const args = process.argv.slice(2);
+const startFileIndex = parseInt(args[0], 10);
+const endFileIndex = parseInt(args[1], 10);
+
+if (isNaN(startFileIndex) || isNaN(endFileIndex)) {
+  console.error("Veuillez fournir des indices de fichier valides.");
+  process.exit(1);
+}
+
+processFiles(startFileIndex, endFileIndex);
