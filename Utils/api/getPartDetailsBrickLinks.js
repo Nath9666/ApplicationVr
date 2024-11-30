@@ -5,6 +5,20 @@ import { get3DModelUrl } from "./getDat3D.js";
 
 const delay = (ms) => new Promise((resolve) => setTimeout(resolve, ms));
 
+const time = 30000;
+
+const fetchWithRetry = async (url, retries = 3, delayMs = 60000) => {
+  for (let i = 0; i < retries; i++) {
+    try {
+      return await axios.get(url);
+    } catch (error) {
+      if (i === retries - 1) throw error;
+      console.error(`Retry ${i + 1}/${retries} failed: ${error.message}`);
+      await delay(delayMs);
+    }
+  }
+};
+
 /**
  * Fetches details of a specific LEGO part in the BrickLink catalog.
  *
@@ -14,9 +28,9 @@ const delay = (ms) => new Promise((resolve) => setTimeout(resolve, ms));
  */
 export const getPartDetailsBrick = async (partId) => {
   const url = `https://www.bricklink.com/v2/catalog/catalogitem.page?P=${partId}#T=C`;
-  await delay(1000); // Attendre 1 seconde avant de faire la prochaine requête
+  await delay(time); // Attendre 1 seconde avant de faire la prochaine requête
   try {
-    const response = await axios.get(url);
+    const response = await fetchWithRetry(url);
     const html = response.data;
     const dom = new JSDOM(html);
     const document = dom.window.document;
@@ -52,29 +66,13 @@ export const getPartDetailsBrick = async (partId) => {
     let studDimensionsElement = document.querySelector("#dimSec");
     let studDimensions = "N/A";
     if (studDimensionsElement) {
-      let temp = studDimensionsElement.textContent.trim().split("x");
-      if (temp.length === 3) {
-        studDimensions = {
-          length: temp[0],
-          width: temp[1],
-          height: temp[2].split("in")[0],
-          mesure: "studs",
-        };
-      }
+      studDimensions = studDimensionsElement.textContent;
     }
 
     let packagingDimensionsElement = document.querySelectorAll("#dimSec")[1];
     let packagingDimensions = "N/A";
     if (packagingDimensionsElement) {
-      let temp = packagingDimensionsElement.textContent.trim().split("x");
-      if (temp.length === 3) {
-        packagingDimensions = {
-          length: temp[0],
-          width: temp[1],
-          height: temp[2].split("cm")[0],
-          mesure: "cm",
-        };
-      }
+      packagingDimensions = packagingDimensionsElement.textContent;
     }
 
     // Récupérer l'URL du modèle 3D
@@ -84,7 +82,7 @@ export const getPartDetailsBrick = async (partId) => {
       if (data[0].startsWith("<!doctype html>")) {
         url3D = "N/A";
       } else {
-        console.log("3D model");
+        console.log("\x1b[32m%s\x1b[0m", "3D model"); // Afficher en vert
         url3D = data[1];
       }
     } catch (error) {
@@ -117,33 +115,45 @@ const files = fs
 const processFiles = async () => {
   let fileNumber = 0;
   let totalFiles = files.length;
-  for (const file of files) {
+  const batchSize = 50; // Taille du lot pour les parts
+
+  for (let i = 0; i < totalFiles; i++) {
+    const file = files[i];
     fileNumber++;
-    let partNumber = 0;
     const data = fs.readFileSync(file);
     const dataDist = file
       .replace("rebrickable", "bricklinks")
       .replace(".json", "_bricklinks.json");
-    const allParts = [];
     const json = JSON.parse(data);
     const parts = json.results;
-    let totalParts = parts.length;
-    for (const part of parts) {
-      partNumber++;
-      console.log(
-        `${fileNumber}/${totalFiles} - part ${partNumber}/${totalParts}`
+
+    for (let j = 0; j < parts.length; j += batchSize) {
+      const batchParts = parts.slice(j, j + batchSize);
+
+      const partPromises = batchParts.map(async (part, partNumber) => {
+        console.log(
+          `${fileNumber}/${totalFiles} - part ${j + partNumber + 1}/${
+            parts.length
+          }`
+        );
+        if (!part.external_ids || !part.external_ids.BrickLink) {
+          console.log(`no bricklink id for ${part.part_num}`);
+          return null;
+        }
+        const id = part.external_ids.BrickLink[0];
+        const partDetails = await getPartDetailsBrick(id);
+        console.log(`data arrive ${partDetails.partId}`);
+        return partDetails;
+      });
+
+      const allParts = await Promise.all(partPromises);
+      fs.writeFileSync(
+        dataDist.split(".json")[0] + `_${j + 1}.json`,
+        JSON.stringify(allParts.filter(Boolean), null, 2)
       );
-      if (!part.external_ids || !part.external_ids.BrickLink) {
-        console.log(`no bricklink id for ${part.part_num}`);
-        continue;
-      }
-      const id = part.external_ids.BrickLink[0];
-      const partDetails = await getPartDetailsBrick(id);
-      allParts.push(partDetails);
-      console.log(`data arrive ${partDetails.partId}`);
-      await delay(1000); // Attendre 1 seconde avant de faire la prochaine requête
+
+      await delay(time); // Attendre avant de traiter le prochain lot
     }
-    fs.writeFileSync(dataDist, JSON.stringify(allParts, null, 2));
   }
 };
 
