@@ -143,8 +143,8 @@ const processFiles = async (startFileIndex, endFileIndex) => {
       const batchResults = await Promise.all(partPromises);
       allParts = allParts.concat(batchResults.filter(Boolean));
 
-      if (allParts.length >= 1000) {
-        const dataDist = `./Utils/data/bricklinks/parts_${batchCounter}.json`;
+      if (allParts.length >= 990) {
+        const dataDist = `./Utils/data/bricklinks/parts_${i}.json`;
         fs.writeFileSync(dataDist, JSON.stringify(allParts, null, 2));
         allParts = [];
         batchCounter++;
