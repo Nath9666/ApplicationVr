@@ -16,6 +16,7 @@
     "getPartSets": "node Utils/main.js getPartSets",
     "getSetDetails": "node Utils/main.js getSetDetails",
     "getSetParts": "node Utils/main.js getSetParts",
+    "getFile3D": "node ./Utils/api/getFile3D.js",
     "searchParts": "node Utils/main.js searchParts",
     "searchSets": "node Utils/main.js searchSets",
     "DetailsBrick": "node --max-old-space-size=8192 ./Utils/api/getPartDetailsBrickLinks.js",
