@@ -17,18 +17,23 @@ const downloadAndCheckDatFile = async (partId) => {
   try {
     const [html, url] = await get3DModelUrl(partId);
 
-    // Sauvegarder le fichier .dat
-    fs.writeFileSync(filePath, html);
-    console.log(`3D model saved as ${filePath}`);
-
-    // Vérifier s'il y a des fichiers .dat à l'intérieur
-    const datFiles = html.match(/(\d+\.dat)/g);
-    if (datFiles) {
-      for (let i = 1; i < datFiles.length; i++) {
-        const datFile = datFiles[i];
-        const newPartId = datFile.replace(".dat", "");
-        await downloadAndCheckDatFile(newPartId);
+    if (url.startsWith("0")) {
+      // Sauvegarder le fichier .dat
+      fs.writeFileSync(filePath, html);
+      console.log(`3D model saved as ${filePath}`);
+      console.log("\x1b[32m%s\x1b[0m", "3D model"); // Afficher en vert
+      // Vérifier s'il y a des fichiers .dat à l'intérieur
+      const datFiles = html.match(/(\d+\.dat)/g);
+      if (datFiles) {
+        for (let i = 1; i < datFiles.length; i++) {
+          const datFile = datFiles[i];
+          const newPartId = datFile.replace(".dat", "");
+          await downloadAndCheckDatFile(newPartId);
+        }
       }
+    } else {
+      console.log("\x1b[31m%s\x1b[0m", "No 3D model found for part", partId);
+      return;
     }
   } catch (error) {
     console.error("\x1b[31m%s\x1b[0m", "Error:", error);
