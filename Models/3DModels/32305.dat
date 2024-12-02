@@ -1,0 +1,16 @@
+0 Technic Connector Block 3 x 7 x 4
+0 Name: 32305.dat
+0 Author: Robert Sexton
+0 !LDRAW_ORG Unofficial_Part
+0 !LICENSE Redistributable under CCAL version 2.0 : see CAreadme.txt
+0
+0 !HISTORY 2007-03-25 [mikeheide] added missing two lines
+0 !HISTORY 2007-06-21 [mikeheide] fixed several errors
+0 !HISTORY 2007-08-08 [mikeheide] fixed 4 missing lines, and holes in surface
+0 !HISTORY 2007-08-09 [mikeheide] fixed floating cond. line
+0 !HISTORY 2010-07-25 [rhsexton] broke piece down into sub-parts, replaced many quads, triangles and lines with primitives
+0
+1 16 0 0 0 1 0 0 0 1 0 0 0 1 s\32305s01.dat
+1 16 0 0 0 -1 0 0 0 1 0 0 0 1 s\32305s01.dat
+1 16 0 0 0 1 0 0 0 1 0 0 0 1 s\32305s02.dat
+0

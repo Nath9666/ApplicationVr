@@ -1,0 +1,64 @@
+0 Animal Dinosaur Body Quarter with pegs
+0 Name: 40374.dat
+0 Author: Andy Westrate [westrate]
+0 !LDRAW_ORG Unofficial_Part
+0 !LICENSE Redistributable under CCAL version 2.0 : see CAreadme.txt
+
+0 !HISTORY 2009-10-13 {LEGO Universe Team} Original part shape
+0 !HISTORY 2009-11-30 [westrate] File preparation for LDraw Parts Tracker
+
+0 !HELP Pivot point for leg at  -40 33.5 60
+
+0 !KEYWORDS elephant
+
+0 BFC CERTIFY CCW
+
+0 // bottom
+0 BFC INVERTNEXT
+1 16 -10 72 20 0 0 6 0 -4 0 -16 0 0 box5.dat
+1 16 -10 68 20 1 0 0 0 -1 0 0 0 1 stud3.dat
+
+0 // top
+1 16 -30 0 10 1 0 0 0 1 0 0 0 1 stud2.dat
+1 16 -10 0 10 1 0 0 0 1 0 0 0 1 stud2.dat
+
+0 // inside connectors
+1 16 0 9.5 9.5 0 -1 0 0 0 1 1 0 0 connect2.dat
+1 16 0 57.5 9.5 0 -1 0 0 0 1 1 0 0 connect2.dat
+1 16 0 9.5 9.5 0 1 0 0 0 6 6 0 0 4-4edge.dat
+1 16 0 57.5 9.5 0 1 0 0 0 6 6 0 0 4-4edge.dat
+1 16 0 9.5 9.5 0 1 0 0 0 4 4 0 0 4-4edge.dat
+1 16 0 57.5 9.5 0 1 0 0 0 4 4 0 0 4-4edge.dat
+
+0 // front connector
+1 16 -20 33.5 0 1 0 0 0 0 -1 0 1 0 connect2.dat
+1 16 -20 33.5 0 0 0 -1 -1 0 0 0 1 0 4-4ring6.dat
+1 16 -20 33.5 0 0 0 -6 -6 0 0 0 1 0 4-4edge.dat
+1 16 -20 33.5 0 0 0 -7 -7 0 0 0 1 0 4-4edge.dat
+1 16 -20 33.5 0 0 0 -7 -7 0 0 0 17 0 4-4cyli.dat
+0 BFC INVERTNEXT
+1 16 -20 33.5 0 0 0 -4 -4 0 0 0 17 0 4-4cyli.dat
+1 16 -20 33.5 17 0 0 -7 -7 0 0 0 1 0 4-4edge.dat
+1 16 -20 33.5 17 0 0 -4 -4 0 0 0 1 0 4-4edge.dat
+
+0 // outside connector
+1 16 -40 33.5 60 0 1 0 -1 0 0 0 0 1 peghole.dat
+0 // blank
+1 16 -10 33.5 60 0 1 0 -8 0 0 0 0 8 4-4edge.dat
+1 16 -10 33.5 60 0 -1 0 -2 0 0 0 0 2 4-4ring4.dat
+1 16 -22 33.5 60 0 1 0 -8 0 0 0 0 8 4-4edge.dat
+1 16 -22 33.5 60 0 1 0 -6 0 0 0 0 6 4-4edge.dat
+1 16 -22 33.5 60 0 -1 0 -2 0 0 0 0 2 4-4ring3.dat
+1 16 -10 33.5 60 0 1 0 -10 0 0 0 0 10 4-4edge.dat
+1 16 -36 33.5 60 0 1 0 -10 0 0 0 0 10 4-4edge.dat
+1 16 -10 33.5 60 0 -26 0 -10 0 0 0 0 10 4-4cyli.dat
+0 BFC INVERTNEXT
+1 16 -10 33.5 60 0 -12 0 -8 0 0 0 0 8 4-4cyli.dat
+0 BFC INVERTNEXT
+1 16 -22 33.5 60 0 -16 0 -6 0 0 0 0 6 4-4cyli.dat
+
+0 // outside
+1 16 0 0 0 -1 0 0 0 1 0 0 0 1 s\40373s01.dat
+0 // inside
+1 16 0 0 0 1 0 0 0 1 0 0 0 1 s\40374s01.dat
+0

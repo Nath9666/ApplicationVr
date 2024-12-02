@@ -1,0 +1,32 @@
+0 Tyre 56 x 30R Balloon
+0 Name: 32180.dat
+0 Author: Ian Reid [Ian_Reid]
+0 !LDRAW_ORG Unofficial_Part
+0 !LICENSE Redistributable under CCAL version 2.0 : see CAreadme.txt
+
+0 BFC CERTIFY CW
+
+0 !KEYWORDS Technic
+
+0 !HISTORY 2004-07-05 [Ian_Reid] Original construction of file
+0 !HISTORY 2006-07-31 [Ian_Reid] BFC'ed, Removed surplus lines, fixed quad vertex sequence. 
+0 !HISTORY 2006-08-05 [Ian_Reid] BFC'ed, Non-coplaner quads split to two triangles 
+0 !HISTORY 2007-06-15 [Ian_Reid] Added conditional lines
+0 !HISTORY 2011-07-11 [Ian_Reid] Addressed UnMalformed Header and added conditional lines
+
+1 16 0 0 0 0 0.406737 -0.913545 0 0.913545 0.406737 1 0 0 s\32180A.dat
+1 16 0 0 0 0 0.743145 -0.669131 0 0.669131 0.743145 1 0 0 s\32180A.dat
+1 16 0 0 0 0 0.951057 -0.309017 0 0.309017 0.951057 1 0 0 s\32180A.dat
+1 16 0 0 0 0 0.994522 0.104528 0 -0.104528 0.994522 1 0 0 s\32180A.dat
+1 16 0 0 0 0 0.866025 0.5 0 -0.5 0.866025 1 0 0 s\32180A.dat
+1 16 0 0 0 0 0.587785 0.809017 0 -0.809017 0.587785 1 0 0 s\32180A.dat
+1 16 0 0 0 0 0.207912 0.978148 0 -0.978148 0.207912 1 0 0 s\32180A.dat
+1 16 0 0 0 0 -0.207912 0.978148 0 -0.978148 -0.207912 1 0 0 s\32180A.dat
+1 16 0 0 0 0 -0.587785 0.809017 0 -0.809017 -0.587785 1 0 0 s\32180A.dat
+1 16 0 0 0 0 -0.866025 0.5 0 -0.5 -0.866025 1 0 0 s\32180A.dat
+1 16 0 0 0 0 -0.994522 0.104528 0 -0.104528 -0.994522 1 0 0 s\32180A.dat
+1 16 0 0 0 0 -0.951057 -0.309017 0 0.309017 -0.951057 1 0 0 s\32180A.dat
+1 16 0 0 0 0 -0.743145 -0.669131 0 0.669131 -0.743145 1 0 0 s\32180A.dat
+1 16 0 0 0 0 0 -1 0 1 0 1 0 0 s\32180A.dat
+1 16 0 0 0 0 -0.406737 -0.913545 0 0.913545 -0.406737 1 0 0 s\32180A.dat
+0
