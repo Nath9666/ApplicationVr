@@ -106,3 +106,6 @@ convertAndExport3DModel(partId, format);
 
 // essayer de passer fusionner les fichiers .dat a la main en ligne de code sans passer par un truc en automatique
 // faire attention au matric de transformation et au fichier en question
+
+// node DatTo3D.js 3001 obj
+// appel a stud.dat et stud4.dat
