@@ -30,14 +30,14 @@ const readAndScaleDatFile = (partId, scale) => {
       const m32 = parseFloat(parts[12]) * scale;
       const m33 = parseFloat(parts[13]) * scale;
       return `1 ${parts[1]} ${x} ${y} ${z} ${m11} ${m12} ${m13} ${m21} ${m22} ${m23} ${m31} ${m32} ${m33} ${parts[14]}`;
-    } else if (line.startsWith("2 ")) {
+    } else if (line.startsWith("2 ") || line.startsWith(" 2 ")) {
       const parts = line.split(" ");
       const x1 = parseFloat(parts[2]) * scale;
       const y1 = parseFloat(parts[3]) * scale;
       const z1 = parseFloat(parts[4]) * scale;
-      const x2 = parseFloat(parts[5]);
-      const y2 = parseFloat(parts[6]);
-      const z2 = parseFloat(parts[7]);
+      const x2 = parseFloat(parts[5]) * scale;
+      const y2 = parseFloat(parts[6]) * scale;
+      const z2 = parseFloat(parts[7]) * scale;
       return `2 ${parts[1]} ${x1} ${y1} ${z1} ${x2} ${y2} ${z2}`;
     }
     return line;
@@ -47,10 +47,11 @@ const readAndScaleDatFile = (partId, scale) => {
 };
 
 const partId = "4-4edge";
-const scale = 1000;
+const scale = 10;
 const scaledContent = readAndScaleDatFile(partId, scale);
 
 ldrawLoader.parse(scaledContent, (group) => {
+  group.translateX(-5);
   scene.add(group);
 
   const exporter = new OBJExporter();
