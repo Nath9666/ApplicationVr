@@ -140,3 +140,8 @@ npm run getPartDetails -- 3003
 ### Licence
 
 Ce projet est sous licence MIT. Voir le fichier LICENSE pour plus de détails.
+
+## Sources
+
+mettre les plugins et les assets utilisés assemblé
+regarder les interaction en VR
