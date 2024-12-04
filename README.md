@@ -145,3 +145,34 @@ Ce projet est sous licence MIT. Voir le fichier LICENSE pour plus de détails.
 
 mettre les plugins et les assets utilisés assemblé
 regarder les interaction en VR
+
+Here are the titles for the provided links in markdown format:
+
+- [LDraw.org - Documentation pour les models des pieces](https://www.ldraw.org/)
+- [Getting Started with LDraw](https://www.ldraw.org/article/218.html)
+- [LDraw - Wikipedia](https://en.wikipedia.org/wiki/LDraw)
+- [LDraw.org GitHub Repository - leurs différents projet](https://github.com/ldraw-org)
+- [BrickHub - Online LEGO Model Viewer](https://brickhub.org/)
+- [Rebrickable - LEGO Set Database](https://rebrickable.com/home/)
+- [BrickLink - The LEGO Marketplace](https://www.bricklink.com/v2/main.page)
+
+### Aide pour le programme
+
+- [A Unity plugin for LDRAW has been developed](https://habr.com/en/articles/433364/)
+- [The repo of this plugin](https://github.com/Nox7atra/LDraw_Importer_Unity)
+- [package unreal developp for lego pieces ](https://jc-tchang.philohome.com/model/Unity.htm)
+
+## Arborecence du projet et explication
+
+- **Helper** : contient les fichiers pdf du prof
+- **Models** : contient les models 3D des pieces LEGO
+  --- **3DModels** : contient les models 3D des pieces LEGO en .dat soit du LDraw
+  --- **obj** : contient les models 3D des pieces LEGO en .obj
+  --- 3Dparts.json : contient la liste des fichiers 3D des pieces LEGO
+- **Utils** : contient les fichiers utils pour le projet
+  --- **API** : contient les fichiers pour l'api et comment s'en servir
+  --- **data** : contient les fichiers pour Unity
+  ------ **brinklink** : contient les fichiers json des pieces LEGO (57 fichiers) dans la base de donnée de chez brinklink
+  ------ **rebrikable** : contient les fichiers json des pieces LEGO (57 fichiers) dans la base de donnée de chez rebrikable
+  ------ \_Bdd.json : contient la base de donnée des pieces LEGO
+  --- Rapport.pdf / .docx : contient le rapport du projet ansi que les annexes
